@@ -14,7 +14,7 @@ h1 {
   text-align: center;
   font-family: 'DejaVu Sans Mono', monospace;
   font-size: 1.88rem;
-  color: #fff;
+  color: #b9ffe5;
 }
 
 h1 .highlight {
@@ -25,6 +25,11 @@ h1 .highlight {
 h2 {
   font-family: 'DejaVu Sans Mono', monospace;
   font-size: 1.55rem;
+  font-weight: lighter;
+  color: #b9ffe5;
+}
+h3 {
+  color: rgba(222, 255, 227, .8);
 }
 
 .App {
@@ -33,13 +38,12 @@ h2 {
   background-image: url('./background_photo_desktop.jpg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;  
+  background-repeat: no-repeat;
   font-weight: lighter;
   color: #fff;
 }
 
 .App-playlist {
-
   display: flex;
   justify-content: space-between;
   width: 100%;

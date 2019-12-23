@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import CurrentPlaylists from '../CurrentPlaylists/CurrentPlaylists';
 import Spotify from '../../util/Spotify';
 
 import './App.css';
@@ -13,14 +14,17 @@ class App extends React.Component {
     {
       searchResults: [],
       playlistName: '',
-      playlistTracks: []
+      playlistTracks: [],
+      currentPlaylists: []
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    this.refreshCurrentPlaylist = this.refreshCurrentPlaylist.bind(this);
     Spotify.getAccessToken();
+
   }
   addTrack(track) {
     if (!this.state.playlistTracks.find(trackData => {
@@ -34,7 +38,7 @@ class App extends React.Component {
     let updatedPlaylist = this.state.playlistTracks.filter(aTrack => aTrack.ID !== track.ID);
     this.setState({playlistTracks: updatedPlaylist});
   }
-  updatePlaylistName(name) {    
+  updatePlaylistName(name) {
     this.setState({playlistName: name});
   }
   savePlaylist(name) {
@@ -49,25 +53,43 @@ class App extends React.Component {
     } catch(error) {
       console.error(error);
     }
+    this.refreshCurrentPlaylist();
   }
   search(search) {
     Spotify.search(search).then(results => {
       this.setState({searchResults: results});
     });
   }
+  refreshCurrentPlaylist() {
+    let lists = [];
+    Spotify.getPlayLists().then(lists => lists.items).then(list => {
+      // console.log(e[0].name)
+      list.map(data => {
+        console.log()
+        lists.push(data.name)
+      });
+    }).then(() => {
+      this.setState({currentPlaylists: lists});
+      console.log('this.setState({currentPlaylists: lists});', lists);
+    });
+  }
   componentDidMount() {
+    this.refreshCurrentPlaylist();
   }
   render() {
+    // console.log(this.state)
     return(
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
         <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
+            <CurrentPlaylists playlists={this.state.currentPlaylists} />
             <Playlist playlistName={this.state.playlistName} onRemove={this.removeTrack}
             playlistTracks={this.state.playlistTracks} onNameChange={this.updatePlaylistName}
-            onSave={this.savePlaylist} />
+            onSave={this.savePlaylist}
+            />
           </div>
         </div>
       </div>

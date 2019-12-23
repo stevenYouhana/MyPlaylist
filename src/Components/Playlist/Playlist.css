@@ -15,6 +15,11 @@
   font-weight: lighter;
   background-color: rgba(140, 150, 163, 0.1);
 }
+.Playlist h2 {
+  font-weight: bold;
+  font-size: 22px;
+  color: #7dff9b;
+}
 
 .Playlist input {
   width: 100%;
@@ -22,9 +27,9 @@
   outline: 0;
   background: transparent;
   border-bottom: 1px solid #6f6f6f;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DejaVu Sans Mono', monospace;
   font-size: 1.55rem;
-  color: #fff;
+  color: #b9ffe5;
   font-weight: lighter;
 
 }
@@ -45,7 +50,7 @@
 }
 
 .Playlist-save:hover {
-  background-color: rgba(108, 65, 233, .7);
+  background-color: rgba(179, 119, 110, .7);
 }
 
 ::-webkit-scrollbar {

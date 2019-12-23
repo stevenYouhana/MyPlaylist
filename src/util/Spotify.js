@@ -51,7 +51,7 @@ const Spotify = {
         }));
       });
   },
-  savePlaylist (name, trackURIs) {    
+  savePlaylist (name, trackURIs) {
     if (!name || !trackURIs.length) return;
     let accesToken = Spotify.getAccessToken();
     let header = {Authorization: `Bearer ${accesToken}`};
@@ -79,6 +79,11 @@ const Spotify = {
               })
           })
       })
+  },
+  getPlayLists() {
+    const header = {Authorization: `Bearer ${accesToken}`};
+    return fetch('https://api.spotify.com/v1/me/playlists', {headers: header})
+      .then(response => response.json());      
   }
 }
 

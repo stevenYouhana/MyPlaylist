@@ -32,6 +32,12 @@
 
 .Track-information p {
   font-size: .83rem;
-  font-weight: 300;
-  color: rgba(256, 256, 256, 0.8);
+  font-weight: 400;
+  color: rgba(42, 252, 56, 0.8);
+  margin-top: 5px;
+}
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(256, 256, 256, 1);
 }
