@@ -10,7 +10,7 @@ html {
 
 h1 {
   padding: .77rem 0;
-  background-color: #010c3f;
+  background-color: #393d42;
   text-align: center;
   font-family: 'DejaVu Sans Mono', monospace;
   font-size: 1.88rem;
@@ -18,10 +18,16 @@ h1 {
 }
 
 h1 .highlight {
-  color: #b3896e;
-  font-family: 'DejaVu Sans Mono', monospace;
+  color: #a1fcff;
+  /* font-family: 'DejaVu Sans Mono', monospace; */
+  font-family: 'Allerta Stencil';
+  font-size: 32px;
 }
-
+#my {
+  color: #ffeab2;
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 45px
+}
 h2 {
   font-family: 'DejaVu Sans Mono', monospace;
   font-size: 1.55rem;
@@ -29,7 +35,7 @@ h2 {
   color: #b9ffe5;
 }
 h3 {
-  color: rgba(222, 255, 227, .8);
+  color: rgba(222, 255, 227, .9);
 }
 
 .App {

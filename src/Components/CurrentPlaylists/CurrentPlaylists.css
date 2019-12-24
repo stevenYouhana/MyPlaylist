@@ -1,12 +1,13 @@
 .CurrentPlaylists {
-  width: 50%;
+  width: 33.3%;
   height: 950px;
   overflow-y: scroll;
   padding: .88rem;
-  background-color: rgba(140, 150, 163, 0.2);
+  background-color: rgba(57, 61, 66, 0.7);
   box-shadow: 0 4px 2px 2px #000000;
   font-weight: lighter;
   font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
 .Playlist h1 {
@@ -14,10 +15,22 @@
   font-weight: lighter;
   background-color: rgba(140, 150, 163, 0.1);
 }
-
+.refresh-playlist {
+  font-family: Snell Roundhand, monospace;
+  font-size: 29px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(256, 256, 256, .6);
+  background-color: rgba(120, 160, 193, 0.1);
+}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
+}
+.refresh-playlist:hover {
+    background-color: rgba(14, 100, 163, 0.3);
+    transition: .4s background-color;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1020px) {
