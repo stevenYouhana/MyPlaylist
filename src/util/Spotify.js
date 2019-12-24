@@ -1,4 +1,3 @@
-import Env from '../Env.js';
 const REDIRECT_URI = 'http://localhost:3000/';
 
 // const REDIRECT_URI = "MyTunes.surge.sh";
@@ -9,7 +8,7 @@ const STATE = '34fFs29kd09';
 const token_RGX = 'access_token=([^&]*)';
 const exp_RGX = 'expires_in=([^&]*)';
 const proxy = 'https://cors-anywhere.herokuapp.com/';
-const urlToAccess = `https://accounts.spotify.com/authorize/?client_id=${Env.CLIENT_ID}&scope=playlist-modify-public&response_type=token&redirect_uri=${REDIRECT_URI}`;
+const urlToAccess = `https://accounts.spotify.com/authorize/?client_id=${process.env.REACT_APP_CLIENT_ID}&scope=playlist-modify-public&response_type=token&redirect_uri=${REDIRECT_URI}`;
 let urlToFetch = 'https://api.spotify.com/v1/?search=';
 
 const setURL = async () => {
@@ -17,10 +16,7 @@ const setURL = async () => {
 }
 const Spotify = {
   getAccessToken() {
-    console.log('env.CLIENT_ID: ',Env.CLIENT_ID)
     if (accesToken) return accesToken;
-    // accesToken = window.location.href.match(token_RGX);
-    // let expiresIn = window.location.href.match(exp_RGX);
     if (window.location.href.match(token_RGX) &&
       window.location.href.match(exp_RGX)) {
         accesToken =  window.location.href.match(token_RGX)[1];
@@ -30,7 +26,7 @@ const Spotify = {
         return accesToken;
     }
     else {
-        const goToUrl = `https://accounts.spotify.com/authorize?client_id=${Env.CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
+        const goToUrl = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
         window.location = goToUrl;
     }
   },
@@ -61,7 +57,6 @@ const Spotify = {
       .then(response => response.json())
       .then(jsonResponse => {
         userID = jsonResponse.id;
-        console.log('jsonResponse ',jsonResponse)
         return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`,
           {
             headers: header,
@@ -83,7 +78,7 @@ const Spotify = {
   getPlayLists() {
     const header = {Authorization: `Bearer ${accesToken}`};
     return fetch('https://api.spotify.com/v1/me/playlists', {headers: header})
-      .then(response => response.json());      
+      .then(response => response.json());
   }
 }
 

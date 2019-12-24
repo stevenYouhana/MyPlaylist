@@ -24,7 +24,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
 
     Spotify.getAccessToken();
-
+    console.log('process.env: ', process.env);
   }
   addTrack(track) {
     if (!this.state.playlistTracks.find(trackData => {
@@ -41,7 +41,11 @@ class App extends React.Component {
   updatePlaylistName(name) {
     this.setState({playlistName: name});
   }
-  savePlaylist(name) {
+  savePlaylist() {
+    if (!this.state.playlistName) {
+      alert('specify playlist name');
+      return;
+    }
     let trackURIs = this.state.playlistTracks.map(track => track.URI);
     try {
       Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {

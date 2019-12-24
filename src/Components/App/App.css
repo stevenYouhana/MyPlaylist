@@ -30,9 +30,9 @@ h1 .highlight {
 }
 h2 {
   font-family: 'DejaVu Sans Mono', monospace;
-  font-size: 1.55rem;
+  font-size: 1.15rem;
   font-weight: lighter;
-  color: #b9ffe5;
+  color: rgba(185, 255, 229, 0.7);
 }
 h3 {
   color: rgba(222, 255, 227, .9);
